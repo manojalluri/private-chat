@@ -160,8 +160,8 @@ const ChatRoom = () => {
     return (
       <div className="min-h-screen bg-anora-bg flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-anora-yellow mx-auto mb-4"></div>
-          <p className="text-anora-secondary">Joining room...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-anora-primary mx-auto mb-4 shadow-[0_0_15px_rgba(108,99,255,0.3)]"></div>
+          <p className="text-anora-text-dim font-display tracking-widest text-sm animate-pulse">ESTABLISHING CONNECTION...</p>
         </div>
       </div>
     );
@@ -169,20 +169,20 @@ const ChatRoom = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-anora-bg flex items-center justify-center">
-        <div className="max-w-md bg-white rounded-anora shadow-sm p-8 text-center">
-          <div className="text-red-500 mb-4">
-            <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="min-h-screen bg-anora-bg flex items-center justify-center p-4">
+        <div className="max-w-md w-full glass rounded-3xl p-8 text-center border border-red-500/20">
+          <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4 ring-1 ring-red-500/30">
+            <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-anora-dark mb-2">Error</h3>
-          <p className="text-anora-secondary mb-6">{error}</p>
+          <h3 className="text-xl font-bold text-white font-display mb-2">Connection Error</h3>
+          <p className="text-anora-text-dim mb-6">{error}</p>
           <button
             onClick={() => navigate('/create-join')}
-            className="bg-anora-yellow text-anora-dark px-4 py-2 rounded-anora font-medium hover:opacity-90 transition-opacity"
+            className="w-full bg-red-500 text-white px-6 py-3 rounded-xl font-bold tracking-wide hover:bg-red-600 transition-all shadow-lg shadow-red-500/20"
           >
-            Go Back
+            RETURN TO BASE
           </button>
         </div>
       </div>
@@ -259,8 +259,8 @@ const ChatRoom = () => {
                     <div className={`max-w-[85%] md:max-w-[70%] ${message.anonId === anonId ? 'order-2' : 'order-1'}`}>
                       <div
                         className={`px-5 py-3 shadow-lg backdrop-blur-md relative ${message.anonId === anonId
-                            ? 'bg-gradient-to-br from-anora-primary to-anora-primary/80 text-white rounded-2xl rounded-br-sm border border-anora-primary/50'
-                            : 'bg-anora-card/80 text-anora-text rounded-2xl rounded-bl-sm border border-white/10'
+                          ? 'bg-gradient-to-br from-anora-primary to-anora-primary/80 text-white rounded-2xl rounded-br-sm border border-anora-primary/50'
+                          : 'bg-anora-card/80 text-anora-text rounded-2xl rounded-bl-sm border border-white/10'
                           }`}
                       >
                         {/* Glow for own messages */}

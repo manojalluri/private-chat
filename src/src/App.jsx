@@ -6,9 +6,12 @@ import ChatRoom from './pages/ChatRoom';
 import RoomExpired from './pages/RoomExpired';
 import AdminPanel from './pages/AdminPanel';
 
+import CustomCursor from './components/CustomCursor';
+
 function App() {
   return (
     <div className="App">
+      <CustomCursor />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/create-join" element={<CreateJoinRoom />} />

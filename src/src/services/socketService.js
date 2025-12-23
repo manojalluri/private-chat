@@ -3,7 +3,8 @@ import { io } from 'socket.io-client';
 let socket;
 
 const connectSocket = () => {
-  socket = io();
+  const url = import.meta.env.VITE_API_URL || undefined;
+  socket = io(url);
   return socket;
 };
 

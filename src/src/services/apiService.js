@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create axios instance
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : '/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -17,19 +17,19 @@ const apiService = {
   checkRoomExpiry: (roomCode) => api.get(`/rooms/check-expiry/${roomCode}`),
 
   // Admin API
-  getAllRooms: (adminSecret) => 
+  getAllRooms: (adminSecret) =>
     api.get('/admin/rooms', { headers: { 'x-admin-secret': adminSecret } }),
-  getAllMessages: (adminSecret) => 
+  getAllMessages: (adminSecret) =>
     api.get('/admin/messages', { headers: { 'x-admin-secret': adminSecret } }),
-  deleteMessage: (messageId, adminSecret) => 
+  deleteMessage: (messageId, adminSecret) =>
     api.delete(`/admin/messages/${messageId}`, { headers: { 'x-admin-secret': adminSecret } }),
-  banUser: (data, adminSecret) => 
+  banUser: (data, adminSecret) =>
     api.post('/admin/users/ban', data, { headers: { 'x-admin-secret': adminSecret } }),
-  unbanUser: (data, adminSecret) => 
+  unbanUser: (data, adminSecret) =>
     api.post('/admin/users/unban', data, { headers: { 'x-admin-secret': adminSecret } }),
-  expireRoom: (data, adminSecret) => 
+  expireRoom: (data, adminSecret) =>
     api.post('/admin/rooms/expire', data, { headers: { 'x-admin-secret': adminSecret } }),
-  verifyRoom: (data, adminSecret) => 
+  verifyRoom: (data, adminSecret) =>
     api.post('/admin/rooms/verify', data, { headers: { 'x-admin-secret': adminSecret } }),
 };
 
